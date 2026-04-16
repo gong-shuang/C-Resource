@@ -1,0 +1,3 @@
+- 创建对应的build目录：mkdir build
+- 编译： cd build && cmake .. && make
+- 运行： ./speech_contest_management_system
