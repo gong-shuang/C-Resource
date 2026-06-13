@@ -11,7 +11,7 @@ void printVector(vector<int>& v)
 	cout << endl;
 }
 
-//vector¸³Öµ
+//vectorèµ‹å€¼
 void test01()
 {
 	vector<int>v1;
@@ -21,7 +21,7 @@ void test01()
 	}
 	printVector(v1);
 
-	//¸³Öµ   operator=
+	//èµ‹å€¼   operator=
 	vector <int>v2;
 	v2 = v1;
 	printVector(v2);
@@ -31,7 +31,7 @@ void test01()
 	v3.assign(v1.begin(), v1.end());
 	printVector(v3);
 
-	//n¸öelem ·½Ê½¸³Öµ
+	//nä¸ªelem æ–¹å¼èµ‹å€¼
 	vector<int>v4;
 	v4.assign(10, 100);
 	printVector(v4);

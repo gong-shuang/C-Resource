@@ -4,7 +4,7 @@ using namespace std;
 #include <algorithm>
 #include <ctime>
 
-//常用排序算法  random_shuffle
+//甯哥敤鎺掑簭绠楁硶  random_shuffle
 
 void myPrint(int val)
 {
@@ -21,7 +21,7 @@ void test01()
 		v.push_back(i);
 	}
 
-	//利用洗牌 算法 打乱顺序
+	//鍒╃敤娲楃墝 绠楁硶 鎵撲贡椤哄簭
 	random_shuffle(v.begin(), v.end());
 
 	for_each(v.begin(), v.end(), myPrint);

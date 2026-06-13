@@ -3,7 +3,7 @@ using namespace std;
 #include <vector>
 #include <algorithm>
 
-//二元谓词
+//浜屽厓璋撹瘝
 class MyCompare
 {
 public:
@@ -30,7 +30,7 @@ void test01()
 	}
 	cout << endl;
 
-	//使用函数对象  改变算法策略，变为排序规则为从大到小 
+	//浣跨敤鍑芥暟瀵硅薄  鏀瑰彉绠楁硶绛栫暐锛屽彉涓烘帓搴忚鍒欎负浠庡ぇ鍒板皬 
 	sort(v.begin(), v.end(), MyCompare());
 
 	cout << "-----------------------" << endl;

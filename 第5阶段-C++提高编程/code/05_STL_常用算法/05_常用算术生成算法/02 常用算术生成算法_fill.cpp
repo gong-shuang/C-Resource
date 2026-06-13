@@ -5,7 +5,7 @@ using namespace std;
 #include <algorithm>
 
 
-//常用算术生成算法 fill
+//甯哥敤绠楁湳鐢熸垚绠楁硶 fill
 void myPrint(int val)
 {
 	cout << val << " ";
@@ -15,7 +15,7 @@ void test01()
 	vector<int>v;
 	v.resize(10);
 
-	//后期重新填充
+	//鍚庢湡閲嶆柊濉厖
 	fill(v.begin(), v.end(), 100);
 	for_each(v.begin(), v.end(), myPrint);
 

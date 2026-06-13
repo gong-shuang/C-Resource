@@ -4,7 +4,7 @@ using namespace std;
 #include <vector>
 #include <functional>
 
-//³£ÓÃÅÅĞòËã·¨ sort
+//å¸¸ç”¨æ’åºç®—æ³• sort
 void myPrint(int val)
 {
 	cout << val << " ";
@@ -19,12 +19,12 @@ void test01()
 	v.push_back(20);
 	v.push_back(40);
 
-	//ÀûÓÃsort½øĞĞÉıĞò
+	//åˆ©ç”¨sortè¿›è¡Œå‡åº
 	sort(v.begin(), v.end());
 	for_each(v.begin(), v.end(), myPrint);
 	cout << endl;
 
-	//¸Ä±äÎª ½µĞò
+	//æ”¹å˜ä¸º é™åº
 	sort(v.begin(), v.end(), greater<int>());
 	for_each(v.begin(), v.end(), myPrint);
 	cout << endl;
