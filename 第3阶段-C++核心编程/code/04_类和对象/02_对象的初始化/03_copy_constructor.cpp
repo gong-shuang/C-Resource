@@ -3,6 +3,8 @@
 #include<iostream>
 using namespace std;
 
+#include <vector>
+
 class Person { 
 public:
 	Person() {
@@ -20,6 +22,15 @@ public:
 	//析构函数在释放内存之前调用
 	~Person() {
 		cout << "析构函数!" << endl;
+	}
+	// 重载 = 运算符
+	Person& operator=(const Person& p) {
+		// 检查自赋值
+		if (this != &p) {
+			mAge = p.mAge;
+		}
+		cout << "重载 = 运算符!" << endl;
+		return *this;
 	}
 public:
 	int mAge;
@@ -55,19 +66,28 @@ Person doWork2()
 	return p1;
 }
 
+// 为防止编译器优化，使用下面的命令编译：
+// g++ -O0 -fno-elide-constructors 03_copy_constructor.cpp -o test
 void test03()
 {
 	Person p = doWork2();
 	cout << (int *)&p << endl;
+	cout << "-----------1" << endl;
 }
 
 
 int main() {
 
-	test01();
+	// test01();
 	// test02();
-	cout << "-----------" << endl;
 	// test03();
+	cout << "-----------" << endl;
+
+	// 4. 情况4：容器操作
+	std::vector<Person> vec;
+	Person p(10);
+	vec.push_back(p);          // 调用拷贝构造函数（存入副本）
+
 
 	system("pause");
 

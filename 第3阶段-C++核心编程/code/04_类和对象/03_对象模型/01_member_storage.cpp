@@ -17,13 +17,18 @@ public:
 		cout << "mA:" << this->mA << endl;
 	}
 	//静态成员函数也不占对象空间
-	static void sfunc() { 
+	static void sfunc() {
+		cout << "mB:" << mB << endl;
 	}
 };
 
-int main() {
+// 如果后面的代码使用了Person::mB变量，那么这里必须要初始化，否则编译不通过；
+int Person::mB = 0;
 
-	cout << sizeof(Person) << endl; // 输出4，只计算非静态成员变量的大小
+int main() {
+	Person A;
+	cout << sizeof(A) << endl; // 输出4，只计算非静态成员变量的大小
+	A.sfunc();
 
 	system("pause");
 

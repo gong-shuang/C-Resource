@@ -17,16 +17,16 @@ public:
 	//有参构造函数
 	Person(int a) {
 		age = a;
-		cout << "有参构造函数!" << endl;
+		cout << "有参构造函数! a: " << a << endl;
 	}
 	//拷贝构造函数
-	Person(const Person& p) {
+	Person(const Person& p) {   // 这里的 const 必须加上
 		age = p.age;
-		cout << "拷贝构造函数!" << endl;
+		cout << "拷贝构造函数! age:" << age << endl;
 	}
 	//析构函数
 	~Person() {
-		cout << "析构函数!" << endl;
+		cout << "析构函数! age:" << age << endl;
 	}
 public:
 	int age;
@@ -42,22 +42,27 @@ void test01() {
 void test02() {
 
 	//2.1  括号法，常用
-	Person p1(10);
+	Person p1(1);
 	//注意1：调用无参构造函数不能加括号，如果加了编译器认为这是一个函数声明
 	//Person p2();
 
 	//2.2 显式法
-	Person p2 = Person(10); 
+	Person p2 = Person(2);
 	Person p3 = Person(p2);
 	//Person(10)单独写就是匿名对象  当前行结束之后，马上析构
 
 	//2.3 隐式转换法
-	Person p4 = 10; // Person p4 = Person(10); 
+	Person p4 = 3; // Person p4 = Person(10);
 	Person p5 = p4; // Person p5 = Person(p4); 
 
 	//注意2：不能利用 拷贝构造函数 初始化匿名对象 编译器认为是对象声明
-	// Person p6(p4);
-	Person p6 = Person(p4);
+	Person p6(p4);
+	// Person p6 = Person(p4);
+
+	// 注意： gs： 如果拷贝构造函数的参数 不加 const， 那么下面的代码会报错
+	// const Person p7;
+	// Person p8 = p7;   // 报错！因为 p1 是 const，不能绑定到非const引用
+	// Person p9 = Person(20);   // 报错！临时对象不能传给 Person(Person&)
 }
 
 int main() {
