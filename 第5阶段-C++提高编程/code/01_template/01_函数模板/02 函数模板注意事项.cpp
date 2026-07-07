@@ -19,8 +19,9 @@ void test01()
 	int a = 10;
 	int b = 20;
 	char c = 'c';
-	//mySwap(a, b); //正确！
-	//mySwap(a, c); //错误！推导不出一致的T类型
+	mySwap(a, b); //正确！
+	// mySwap<int>(a, (int)c); //语法错误， 参数是 T& a, T& b（非 const 引用），而 (int)c 是一个临时值（右值）。C++ 规定：非 const 引用只能绑定到左值（具名变量），不能绑定到临时值。
+	// mySwap<int>(a, c); // 错误，推导不出一致的T类型
 	cout << "a = " << a << endl;
 	cout << "b = " << b << endl;
 }
@@ -34,13 +35,13 @@ void func()
 
 void test02()
 {
-	func<int>();
+	func<int>();  // 必须写 <int>，无法自动推导
 }
 
 int main() {
 
-	//test01();
-	test02();
+	test01();
+	// test02();
 
 	system("pause");
 

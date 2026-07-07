@@ -61,6 +61,9 @@ void test01() {
 int main() {
     test01();
 
+    // Animal animal;
+    // DoSpeak(animal);
+
     system("pause");
 
     return 0;

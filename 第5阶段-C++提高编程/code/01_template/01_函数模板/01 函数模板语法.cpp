@@ -41,24 +41,37 @@ void test01()
 	//两种方式使用函数模板
 
 	//1、自动类型推导
-	//mySwap(a, b);
+	// mySwap(a, b);
 
 	//2、显示指定类型
 	mySwap<int>(a, b);
 	cout << "a = " << a << endl;
 	cout << "b = " << b << endl;
 
-	//double c = 1.1;
-	//double d = 2.2;
+	double c = 1.1;
+	double d = 2.2;
 
 	//swapDouble(c, d);
-	//cout << "c = " << c << endl;
-	//cout << "d = " << d << endl;
+	mySwap(c, d);
+	cout << "c = " << c << endl;
+	cout << "d = " << d << endl;
+}
+
+// 场景1：模板参数未出现在函数参数中
+template<typename T>
+void print() {
+	T val = 0;
+	cout << val << endl;
+}
+
+void test02() {
+	print<int>();   // 必须写 <int>，无法自动推导
 }
 
 int main() {
 
-	test01();
+	// test01();
+	test02();
 
 	system("pause");
 

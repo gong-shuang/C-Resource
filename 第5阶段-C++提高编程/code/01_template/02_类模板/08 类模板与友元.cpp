@@ -26,7 +26,7 @@ class Person
 	//全局函数 类外实现
 	//加空模板参数列表
 	//如果全局函数 是类外实现，需要让编译器提前知道这个函数的存在
-	friend void printPerson2<>(Person<T1, T2> p);
+	friend void printPerson2<>(Person<T1, T2> p);  // <> 是空的模板参数列表，作用是告诉编译器：printPerson2 是一个函数模板的实例化，不是普通函数。
 
 public:
 	Person(T1 name, T2 age)

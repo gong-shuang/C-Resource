@@ -32,6 +32,7 @@ void test01()
 	else
 	{
 		cout << "找到大于5的数字为： " << *it << endl;
+		cout << "11找到： " << *++it << endl;
 	}
 
 }
@@ -52,7 +53,7 @@ public:
 class Greater20
 {
 public:
-	bool operator()(Person &p)
+	bool operator()(const Person &p) const
 	{
 		return  p.m_Age > 20;
 	}
@@ -73,8 +74,10 @@ void test02()
 	v.push_back(p3);
 	v.push_back(p4);
 
+	Greater20 greater20;
+
 	//找年龄大于20的人
-	vector<Person>::iterator it = find_if(v.begin(), v.end(), Greater20());
+	vector<Person>::iterator it = find_if(v.begin(), v.end(), greater20);
 
 	if (it == v.end())
 	{
@@ -88,7 +91,7 @@ void test02()
 
 int main() {
 
-	//test01();
+	test01();
 
 	test02();
 

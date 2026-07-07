@@ -12,17 +12,21 @@ public:
 
 	//this指针的本质是一个指针常量，指针的指向不可修改
 	//如果想让指针指向的值也不可以修改，需要声明常函数
-	void ShowPerson() const {
+	void ShowPerson(int b) const {
 		//const Type* const pointer;
-		// this = NULL; // 不能修改指针的指向 Person* const this;
-		// this->m_A = 100; // 但是this指针指向的对象的数据是可以修改的
+		// this = NULL; // 不能修改指针的指向，this 本质是 Person* const this
+		// this->m_A = 100; // const 函数中不能修改非 mutable 成员
 
 		//const修饰成员函数，表示指针指向的内存空间的数据不能修改，除了mutable修饰的变量
 		this->m_B = 100;
+
+		int a = 1;
+		a += b;
+		cout << "a: " << a << endl;
 	}
 
 	void MyFunc() const {
-		// mA = 10000; // 错误，常函数不能修改非mutable成员变量
+		// m_A = 10000; // 错误，常函数不能修改非mutable成员变量
 	}
 
 public:
@@ -40,7 +44,7 @@ void test01() {
 	person.m_B = 100; // 但是常对象可以修改mutable修饰成员变量
 
 	//常对象访问成员函数
-	person.MyFunc(); // 常对象不能调用非const的函数
+	person.ShowPerson(4); // 常对象不能调用非const的函数
 
 }
 

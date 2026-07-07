@@ -17,13 +17,18 @@ public:
 		return v1 + v2;
 	}
 
+	MyAdd()
+	{
+		cout << "constructor。。。MyAdd()" <<endl;
+	}
+
 };
 
 // 1、函数对象在使用时，可以像普通函数那样调用, 可以有参数，可以有返回值
 void test01()
 {
-	MyAdd myAdd;
-	cout <<  myAdd(10, 10) <<endl;
+	// MyAdd myAdd = MyAdd();
+	cout <<  MyAdd()(10, 10) <<endl;
 }
 
 
@@ -69,11 +74,11 @@ void test03()
 
 int main() {
 
-	//test01();
+	test01();
 
-	//test02();
+	// test02();
 
-	test03();
+	// test03();
 
 	system("pause");
 

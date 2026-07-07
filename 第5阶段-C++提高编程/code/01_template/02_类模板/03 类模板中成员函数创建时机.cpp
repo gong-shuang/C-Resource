@@ -46,8 +46,9 @@ public:
 void test01()
 {
 	MyClass<Person1>m;
+	// MyClass<Person2>m2;
 	m.func1();
-	m.func2();
+	// m2.func2();
 }
 
 int main() {

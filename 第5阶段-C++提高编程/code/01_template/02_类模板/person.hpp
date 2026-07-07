@@ -2,6 +2,8 @@
 #include <iostream>
 using namespace std;
 
+// 解决方式2：将声明和实现写到同一个文件中，并更改后缀名为.hpp，hpp是约定的名称，并不是强制
+
 #include <string>
 template<class T1, class T2>
 class Person

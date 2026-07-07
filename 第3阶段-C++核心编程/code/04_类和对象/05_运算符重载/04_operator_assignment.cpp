@@ -22,13 +22,20 @@ public:
 	}
 
 	//重载赋值运算符 
-	Person& operator=(Person &p)
+	Person& operator=(const Person &p)
 	{
-		if (m_Age != NULL)
-		{
-			delete m_Age;
-			m_Age = NULL;
-		}
+		// 防止自赋值
+		if (this == &p)
+			return *this;
+
+		// C++ 中 delete nullptr 是安全的，无需手动判空，直接删除
+		// if (m_Age != NULL)
+		// {
+		// 	delete m_Age;
+		// }
+		delete m_Age;
+		m_Age = NULL;
+
 		//编译器提供的代码是浅拷贝
 		//m_Age = p.m_Age;
 
@@ -65,11 +72,11 @@ void test01()
 
 	p3 = p2 = p1; // 赋值操作
 
-	cout << "p1的年龄为：" << *p1.m_Age << endl;
+	cout << "p1的年龄为：" << p1.m_Age << endl;
 
-	cout << "p2的年龄为：" << *p2.m_Age << endl;
+	cout << "p2的年龄为：" << p2.m_Age << endl;
 
-	cout << "p3的年龄为：" << *p3.m_Age << endl;
+	cout << "p3的年龄为：" << p3.m_Age << endl;
 }
 
 int main() { 

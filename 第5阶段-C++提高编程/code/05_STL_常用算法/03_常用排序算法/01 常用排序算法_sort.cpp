@@ -21,7 +21,8 @@ void test01()
 
 	//利用sort进行升序
 	sort(v.begin(), v.end());
-	for_each(v.begin(), v.end(), myPrint);
+	// for_each(v.begin(), v.end(), myPrint);
+	for_each(v.begin(), v.end(), [](int val) {cout << val << " "; });
 	cout << endl;
 
 	//改变为 降序

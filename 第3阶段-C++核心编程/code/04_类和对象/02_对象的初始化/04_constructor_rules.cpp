@@ -15,10 +15,10 @@ public:
 		cout << "有参构造函数!" << endl;
 	}
 	//拷贝构造函数
-	Person(const Person& p) {
-		age = p.age;
-		cout << "拷贝构造函数!" << endl;
-	}
+	// Person(const Person& p) {
+	// 	age = p.age;
+	// 	cout << "拷贝构造函数!" << endl;
+	// }
 	//析构函数
 	~Person() {
 		cout << "析构函数!" << endl;
@@ -51,7 +51,8 @@ void test02()
 
 int main() {
 
-	test01();
+	// test01();
+	test02();
 
 	system("pause");
 

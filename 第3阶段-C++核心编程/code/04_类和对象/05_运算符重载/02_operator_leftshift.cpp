@@ -3,7 +3,8 @@
 #include<iostream>
 using namespace std;
 
-class Person { 
+class Person {
+	// friend 声明让函数能访问 private 成员 m_A/m_B，
 	friend ostream& operator<<(ostream& out, Person& p);
 
 public:
@@ -15,8 +16,9 @@ public:
 	}
 
 	//成员函数 实现不了  p << cout 不是我们想要的效果
-	//void operator<<(Person& p){
-	//}
+	// operator<< 无法用成员函数实现：cout << p1 的左操作数是 cout（ostream），不是 Person。成员函数方式会变成 p1 << cout，与期望效果相反。
+	// void operator<<(Person& p){
+	// }
 
 private:
 	int m_A;
@@ -25,7 +27,7 @@ private:
 
 //全局函数实现左移重载
 //ostream对象只能有一个
-ostream& operator<<(ostream& out, Person& p) { 
+ostream& operator<<(ostream& out, Person& p) {
 	out << "a:" << p.m_A << " b:" << p.m_B;
 	return out;
 }

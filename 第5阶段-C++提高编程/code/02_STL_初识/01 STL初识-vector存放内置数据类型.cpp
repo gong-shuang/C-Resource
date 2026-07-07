@@ -26,7 +26,7 @@ void test01()
 	vector<int>::iterator itEnd = v.end();  //结束迭代器 指向容器中最后一个元素的下一个位置
 
 	////第一种遍历方式
-	while (itBegin != itEnd)
+ 	while (itBegin != itEnd)
 	{
 		cout << *itBegin << endl;
 		itBegin++;

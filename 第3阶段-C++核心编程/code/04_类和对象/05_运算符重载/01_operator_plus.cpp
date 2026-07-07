@@ -27,13 +27,13 @@ public:
 };
 
 //全局函数实现 + 号运算符重载
-Person operator+(const Person& p1, const Person& p2) {
-	Person temp(0, 0);
-	temp.m_A = p1.m_A + p2.m_A;
-	temp.m_B = p1.m_B + p2.m_B;
-	cout << "----------mA:" << temp.m_A << " mB:" << temp.m_B << endl;
-	return temp;
-}
+// Person operator+(const Person& p1, const Person& p2) {
+// 	Person temp(0, 0);
+// 	temp.m_A = p1.m_A + p2.m_A;
+// 	temp.m_B = p1.m_B + p2.m_B;
+// 	cout << "----------mA:" << temp.m_A << " mB:" << temp.m_B << endl;
+// 	return temp;
+// }
 
 //运算符重载 可以发生函数重载 
 Person operator+(const Person& p2, int val)  

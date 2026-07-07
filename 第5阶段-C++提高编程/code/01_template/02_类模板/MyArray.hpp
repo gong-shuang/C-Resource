@@ -41,13 +41,19 @@ public:
 	{
 		//cout << "Myarray  的 operator=调用" << endl;
 		//先判断原来堆区是否有数据，如果有先释放
-		if (this->pAddress != NULL)
-		{
-			delete[] this->pAddress;
-			this->pAddress = NULL;
-			this->m_Capacity = 0;
-			this->m_Size = 0;
-		}
+		// if (this->pAddress != NULL)
+		// {
+		// 	delete[] this->pAddress;
+		// 	this->pAddress = NULL;
+		// 	this->m_Capacity = 0;
+		// 	this->m_Size = 0;
+		// }
+
+		// 自赋值检查 this == &arr
+		if (this == &arr)
+			return *this;
+
+		delete[] pAddress;
 
 		//深拷贝
 		this->m_Capacity = arr.m_Capacity;
@@ -82,22 +88,39 @@ public:
 			return;
 		}
 		this->m_Size--;
+
+		//确保自定义类型的资源被正确释放
+		pAddress[m_Size].~T();
 	}
 
 	//通过下标方式访问数组中的元素  arr[0] = 100
 	T& operator[](int index)
 	{
-		return this->pAddress[index];
+		// 越界检查
+		if (index < 0 || index >= m_Size)
+		{
+			throw out_of_range("index out of range");
+		}
+		return pAddress[index];
+	}
+
+	const T& operator[](int index) const
+	{
+		if (index < 0 || index >= m_Size)
+		{
+			throw out_of_range("index out of range");
+		}
+		return pAddress[index];
 	}
 
 
 	//返回数组容量
-	int getCapacity()
+	int getCapacity() const
 	{
 		return this->m_Capacity;
 	}
 	//返回数组大小
-	int getSize()
+	int getSize() const
 	{
 		return this->m_Size;
 	}
@@ -106,12 +129,16 @@ public:
 	//析构函数
 	~MyArray()
 	{
-		if (this->pAddress != NULL)
-		{
-			//cout << "Myarray析构函数调用" << endl;
-			delete[] this->pAddress;
-			this->pAddress = NULL;
-		}
+		// 不用判空
+		// if (this->pAddress != NULL)
+		// {
+		// 	//cout << "Myarray析构函数调用" << endl;
+		// 	delete[] this->pAddress;
+		// 	this->pAddress = NULL;
+		// }
+
+		delete[] pAddress;
+		pAddress = nullptr;
 	}
 
 private:

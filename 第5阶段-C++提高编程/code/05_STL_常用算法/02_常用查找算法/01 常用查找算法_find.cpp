@@ -15,6 +15,7 @@ void test01()
 	{
 		v.push_back(i);
 	}
+	v.push_back(5);
 
 	//查找 容器中 是否有 5 这个元素
 	vector<int>::iterator it = find(v.begin(), v.end(), 5);
@@ -25,6 +26,14 @@ void test01()
 	else
 	{
 		cout << "找到： " << *it << endl;
+
+		// if (std::next(it) != v.end())
+		// {
+		// 	int next_val = *std::next(it);
+		// 	cout << "11找到： " << next_val << endl;
+		// }
+		int val = *++it;
+		cout << "11找到： " << val << endl;
 	}
 }
 

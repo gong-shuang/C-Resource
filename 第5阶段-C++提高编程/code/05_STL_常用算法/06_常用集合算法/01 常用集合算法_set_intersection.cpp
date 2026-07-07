@@ -27,8 +27,12 @@ void test01()
 	//获取交集
 	vector<int>::iterator itEnd = set_intersection(v1.begin(), v1.end(), v2.begin(), v2.end(), vTarget.begin());
 
-	for_each(vTarget.begin(), itEnd, myPrint);
+	// for_each(vTarget.begin(), itEnd, myPrint);
+	for_each(vTarget.begin(), vTarget.end(), myPrint);
 	cout << endl;
+	// cout << " end:" << ( itEnd  - vTarget.begin()) << endl;
+	int count = count_if(vTarget.begin(), vTarget.end(), [](int val) { return val != 0; });
+	cout << " 非零元素个数：" << count << endl;
 }
 
 int main() {

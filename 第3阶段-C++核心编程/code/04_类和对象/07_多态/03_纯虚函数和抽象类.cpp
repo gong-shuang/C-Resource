@@ -24,7 +24,7 @@ public:
 class Son :public Base
 {
 public:
-    virtual void func()
+    virtual void func()  // 子类中的 virtual 是可以省略的。
     {
         cout << "func调用" << endl;
     };

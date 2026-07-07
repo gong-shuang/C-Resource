@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # 递归删除当前目录及其子目录中的C++编译生成的可执行文件
+# 兼容 Linux (GNU find) 和 macOS (BSD find)
 
 dir=$(pwd)
 echo "当前目录: $dir"
@@ -9,6 +10,15 @@ echo ""
 
 deleted_count=0
 total_size=0
+
+# 检测操作系统，设置兼容的权限匹配语法
+# GNU find (Linux)  使用 -perm /111
+# BSD find (macOS) 使用 -perm +111
+if [[ "$(uname)" == "Darwin" ]]; then
+    PERM_ANY="-perm +111"
+else
+    PERM_ANY="-perm /111"
+fi
 
 # C++ 编译生成的可执行文件类型：
 #   - 有执行权限的普通文件（排除脚本文件 .sh/.py/.pl 等）
@@ -35,7 +45,7 @@ while IFS= read -r -d '' file; do
     
     echo ""
 done < <(find "$dir" -type f \( \
-    -executable -not \( -name "*.sh" -o -name "*.py" -o -name "*.pl" -o -name "*.rb" -o -name "*.lua" -o -name "*.php" \) \
+    $PERM_ANY -not \( -name "*.sh" -o -name "*.py" -o -name "*.pl" -o -name "*.rb" -o -name "*.lua" -o -name "*.php" \) \
     -o -name "*.o" \
     -o -name "*.a" \
     -o -name "*.so" \

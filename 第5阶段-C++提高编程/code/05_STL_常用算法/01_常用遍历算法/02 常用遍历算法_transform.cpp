@@ -35,7 +35,10 @@ void test01()
 
 	vTarget.resize(v.size()); //目标容器 需要提前开辟空间
 
-	transform(v.begin(), v.end(), vTarget.begin(), Transform());
+	// transform(v.begin(), v.end(), vTarget.begin(), Transform());
+	// 函数对象是老方法了，现在都不用了，使用 lambda表达式
+	transform(v.begin(), v.end(), vTarget.begin(), [](int x){ return x + 100; });
+
 
 	for_each(vTarget.begin(), vTarget.end(), MyPrint());
 	cout << endl;

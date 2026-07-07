@@ -12,10 +12,11 @@ public:
 	}
 
 	void ShowPerson() {
-		if (this == NULL) {
-			return;
-		}
-		cout << mAge << endl;
+		// if (this == NULL) {
+		// 	cout << "this is NULL!" << endl;
+		// 	return;
+		// }
+		cout << " mAge: "<< mAge << endl;
 	}
 
 public:
